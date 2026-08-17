@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "items": [
     {
-      "url": "https://<VERCEL-DEPLOYMENT>/index.html",
+      "url": "https://driver-contact-card.vercel.app/",
       "path": "ActivityLink/",
       "menuName": {
         "en": "Driver Contact Card"
