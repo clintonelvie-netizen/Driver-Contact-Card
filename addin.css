@@ -1,0 +1,139 @@
+/* Driver Contact Card — Geotab add-in v1.0
+   One card, five states. No libraries, no animations, no external fonts. */
+
+.dcc {
+  --dcc-text: #1a1f26;
+  --dcc-muted: #6b7480;
+  --dcc-line: #dfe3e8;
+  --dcc-surface: #ffffff;
+  --dcc-error: #a3231d;
+  --dcc-error-line: #e8bfbd;
+
+  box-sizing: border-box;
+  max-width: 24rem;
+  padding: 1rem;
+  color: var(--dcc-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.dcc *,
+.dcc *::before,
+.dcc *::after {
+  box-sizing: inherit;
+}
+
+/* --- State switching -------------------------------------------------- */
+
+.dcc > [data-when] {
+  display: none;
+}
+
+.dcc[data-state="loading"] > [data-when="loading"],
+.dcc[data-state="card"]    > [data-when="card"],
+.dcc[data-state="empty"]   > [data-when="empty"],
+.dcc[data-state="error"]   > [data-when="error"],
+.dcc[data-state="picker"]  > [data-when="picker"] {
+  display: block;
+}
+
+/* --- Shared card shell ------------------------------------------------
+   Every state uses the same shell (UX-03), so the empty state reads as
+   intentional rather than as a failed request (UX-04). */
+
+.dcc-panel {
+  padding: 1.25rem;
+  border: 1px solid var(--dcc-line);
+  border-radius: 8px;
+  background: var(--dcc-surface);
+}
+
+.dcc-panel--quiet {
+  color: var(--dcc-muted);
+}
+
+/* The error state is the only one that should look alarming. */
+.dcc-panel--error {
+  border-color: var(--dcc-error-line);
+  color: var(--dcc-error);
+}
+
+/* --- Assigned-driver card --------------------------------------------- */
+
+.dcc-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--dcc-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Driver name carries the strongest hierarchy (UX-02). */
+.dcc-name {
+  margin: 0 0 1rem;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.dcc-fields {
+  margin: 0;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--dcc-line);
+}
+
+.dcc-field + .dcc-field {
+  margin-top: 0.75rem;
+}
+
+.dcc-label {
+  margin: 0;
+  color: var(--dcc-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dcc-value {
+  margin: 0.125rem 0 0;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+/* Unavailable values render as an em dash, muted and identical everywhere
+   (UX-05), so missing data never reads as a broken field. */
+.dcc-value.is-empty,
+.dcc-name.is-empty {
+  color: var(--dcc-muted);
+}
+
+/* --- Messages and picker ---------------------------------------------- */
+
+.dcc-message {
+  margin: 0;
+}
+
+.dcc-message--strong {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.dcc-message + .dcc-message {
+  margin-top: 0.25rem;
+}
+
+.dcc-select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--dcc-line);
+  border-radius: 6px;
+  background: var(--dcc-surface);
+  color: var(--dcc-text);
+  font: inherit;
+}

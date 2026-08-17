@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Driver Contact Card</title>
+  <link rel="stylesheet" href="addin.css">
+</head>
+<body>
+
+<div id="dcc-root" class="dcc" data-state="loading">
+
+  <section class="dcc-panel dcc-panel--quiet" data-when="loading">
+    <p class="dcc-message">Loading driver information&hellip;</p>
+  </section>
+
+  <section class="dcc-panel" data-when="card">
+    <p class="dcc-eyebrow">Driver assigned</p>
+    <p class="dcc-name" data-field="name"></p>
+    <dl class="dcc-fields">
+      <div class="dcc-field">
+        <dt class="dcc-label">Phone</dt>
+        <dd class="dcc-value" data-field="phone"></dd>
+      </div>
+      <div class="dcc-field">
+        <dt class="dcc-label">Email</dt>
+        <dd class="dcc-value" data-field="email"></dd>
+      </div>
+      <div class="dcc-field">
+        <dt class="dcc-label">License</dt>
+        <dd class="dcc-value" data-field="license"></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="dcc-panel dcc-panel--quiet" data-when="empty">
+    <p class="dcc-message">No driver assigned to this vehicle.</p>
+  </section>
+
+  <section class="dcc-panel dcc-panel--error" data-when="error">
+    <p class="dcc-message dcc-message--strong">Unable to load driver information.</p>
+    <p class="dcc-message">Please try again.</p>
+  </section>
+
+  <section class="dcc-panel dcc-panel--quiet" data-when="picker">
+    <label class="dcc-label" for="dcc-device">Select a vehicle</label>
+    <select id="dcc-device" class="dcc-select">
+      <option value="">Loading vehicles&hellip;</option>
+    </select>
+  </section>
+
+</div>
+
+<script src="addin.js"></script>
+</body>
+</html>

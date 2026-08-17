@@ -1,0 +1,14 @@
+{
+  "name": "Driver Contact Card",
+  "supportEmail": "clintonelvie@zenduit.com",
+  "version": "1.0.0",
+  "items": [
+    {
+      "url": "https://<VERCEL-DEPLOYMENT>/index.html",
+      "path": "ActivityLink/",
+      "menuName": {
+        "en": "Driver Contact Card"
+      }
+    }
+  ]
+}
